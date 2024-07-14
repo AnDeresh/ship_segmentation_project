@@ -4,7 +4,7 @@ import numpy as np
 import os
 
 class DataGenerator(Sequence):
-    def __init__(self, image_ids, image_dir, mask_dir, batch_size=32, image_size=(128, 128), n_channels=3, shuffle=True):
+    def __init__(self, image_ids, image_dir, mask_dir, batch_size=16, image_size=(128, 128), n_channels=3, shuffle=True):
         self.image_ids = image_ids
         self.image_dir = image_dir
         self.mask_dir = mask_dir

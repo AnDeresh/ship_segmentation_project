@@ -1,17 +1,10 @@
-from tensorflow.keras.callbacks import ReduceLROnPlateau
-from tensorflow.keras.optimizers import Adam
-from tensorflow.keras.callbacks import ModelCheckpoint
-from tensorflow.keras import mixed_precision
+from tensorflow.keras.callbacks import ReduceLROnPlateau, ModelCheckpoint
 import os
 
-from dice_coefficient import *
+from data_generator import *
+from unet_model import *
 from config import *
-from unet_model import unet
-from data_generator import DataGenerator
-
-# Set the policy to mixed precision
-#policy = mixed_precision.Policy('mixed_float16')
-#mixed_precision.set_global_policy(policy)
+from dice_coefficient import *
 
 # Prepare data generators
 train_ids = os.listdir(train_image_dir)
@@ -42,17 +35,14 @@ checkpoint_callback = ModelCheckpoint(
 )
 
 # Compile the model
-initial_lr = 1e-4
-optimizer = Adam(learning_rate=initial_lr)
-model.compile(optimizer=optimizer, loss=combined_loss, metrics=[dice_coefficient])
+model.compile(optimizer='adam', loss=combined_loss, metrics=[dice_coefficient])
 
-
-# Train the model
+# Train the model with the checkpoint callback
 history = model.fit(
     train_generator,
     validation_data=val_generator,
-    epochs=5,  # Continue training for additional epochs
-    callbacks=[checkpoint_callback, reduce_lr]
+    epochs=5,
+    callbacks=[checkpoint_callback]
 )
 
 # Save the model to a file

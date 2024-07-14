@@ -3,7 +3,6 @@ from tensorflow.keras.layers import Input, Conv2D, MaxPooling2D, UpSampling2D, c
 
 def unet(input_size=(128, 128, 3)):
     inputs = Input(input_size)
-    
     # Downsampling
     c1 = Conv2D(64, (3, 3), activation='relu', padding='same')(inputs)
     c1 = Conv2D(64, (3, 3), activation='relu', padding='same')(c1)
