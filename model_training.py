@@ -1,4 +1,4 @@
-from tensorflow.keras.callbacks import ReduceLROnPlateau, ModelCheckpoint
+from tensorflow.keras.callbacks import ReduceLROnPlateau, ModelCheckpoint # type: ignore
 import os
 
 from data_generator import *

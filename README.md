@@ -43,11 +43,10 @@ source venv/bin/activate
 # 3. Install the required packages:
 pip install -r requirements.txt
 
-# 4. Install PyTorch with CUDA support:
-pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
-```
-
 ## Usage
+
+1. Configure model path in `config`.
+2. Run the script to generate and save prediction masks and rectangles.
 
 ### Training the Model
 
@@ -57,15 +56,39 @@ To train the U-Net model, run:
 python model_training.py
 ```
 
+#### Overview
+Trains a U-Net model for image segmentation using specified data generators, with learning rate scheduling and model checkpointing.
+
+#### Functions and Key Components
+- `ReduceLROnPlateau`: Reduces learning rate when validation loss plateaus.
+- `ModelCheckpoint`: Saves model checkpoints during training.
+- `DataGenerator`: Prepares training and validation data.
+- `unet(input_size)`: Defines the U-Net model architecture.
+- `model.compile()`: Compiles the model with the Adam optimizer and custom loss/metrics.
+- `model.fit()`: Trains the model.
+- `model.save()`: Saves the trained model.
+- `model.evaluate()`: Evaluates the model on the validation set.
+
+#### Usage
+1. Ensure paths and parameters are set in `config`.
+2. Run the script to train the model, save checkpoints, and evaluate performance.
+
 ## Running Inference
 
 To perform inference and visualize the results, run:
 
 ```bash
-python inference.py
+python inference_make_prediction_masks_and_csv.py
 ```
 
-The inference.py script processes images from the specified input directory, generates predicted masks, and displays the original images alongside their predicted masks.
+Generates prediction masks using a pre-trained model, converts them to rectangular regions, and saves masks and results in CSV format.
+
+#### Functions
+- `load_and_preprocess_image(image_path, target_size=(128, 128))`: Loads and preprocesses an image.
+- `rle_encode(mask)`: Encodes a mask with Run-Length Encoding (RLE).
+- `find_min_area_rect(mask, threshold=0.5)`: Finds minimum area rectangles in the mask.
+- `draw_rectangles(image_size, boxes)`: Draws rectangles on the mask.
+- `predict_and_convert_to_rect(image_path)`: Predicts and processes mask from an image.
 
 ## Preprocessing Data
 
@@ -75,13 +98,10 @@ To preprocess and save images and masks, run:
 python preprocess_and_save_images_and_masks.py
 ```
 
-## Saving Predictions to CSV
+#### Functions
+- `rle_decode(mask_rle, shape=(768, 768))`: Decodes an RLE mask.
+- `save_images_and_masks(image_ids, image_dir, mask_dir)`: Saves images and masks, handles corrupted files.
 
-To save predicted masks to a CSV file, run:
-
-```bash
-python save_predictions_to_a_csv_file.py
-```
 
 ## Custom Scripts
 
