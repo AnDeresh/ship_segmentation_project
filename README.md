@@ -46,7 +46,7 @@ pip install -r requirements.txt
 ## Usage
 
 1. Configure model path in `config`.
-2. Run the script to generate and save prediction masks and rectangles.
+2. Run the script to generate and save prediction.
 ```
 
 #### Data
