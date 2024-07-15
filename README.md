@@ -50,7 +50,7 @@ pip install -r requirements.txt
 ```
 
 #### Data
-- Data can be downloaded from the [Kaggle Bank Customer Churn Prediction competition](https://www.kaggle.com/competitions/bank-customer-churn-prediction-dlu/data).
+- Data can be downloaded from the [Kaggle Airbus Ship Detection Challenge](https://www.kaggle.com/competitions/airbus-ship-detection/data).
 
 ### Training the Model
 
