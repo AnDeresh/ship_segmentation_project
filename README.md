@@ -48,6 +48,9 @@ pip install -r requirements.txt
 1. Configure model path in `config`.
 2. Run the script to generate and save prediction masks and rectangles.
 
+#### Data
+- Data can be downloaded from the [Kaggle Bank Customer Churn Prediction competition](https://www.kaggle.com/competitions/bank-customer-churn-prediction-dlu/data).
+
 ### Training the Model
 
 To train the U-Net model, run:
