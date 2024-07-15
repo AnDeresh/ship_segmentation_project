@@ -55,12 +55,7 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-## Usage
-
-1. Configure model path in `config`.
-2. Run the script to generate and save prediction.
-
-#### Data
+## Data
 - Data can be downloaded from the [Kaggle Airbus Ship Detection Challenge](https://www.kaggle.com/competitions/airbus-ship-detection/data).
 
 ### Training the Model
