@@ -40,12 +40,12 @@ cd winstars_test_task
 python -m venv venv
 ```
 
-# On Windows
+### On Windows
 ```bash
 .\venv\Scripts\activate
 ```
 
-# On macOS/Linux
+### On macOS/Linux
 ```bash
 source venv/bin/activate
 ```
