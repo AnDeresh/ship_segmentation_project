@@ -28,26 +28,35 @@ Ensure you have the following installed:
 
 ### Installation
 
-```bash
+
 # 1. Clone the repository:
+```bash
 git clone https://github.com/yourusername/winstars_test_task.git
 cd winstars_test_task
+```
 
 # 2. Create and activate a virtual environment:
+```bash
 python -m venv venv
+```
+```bash
 # On Windows
 .\venv\Scripts\activate
+```
+```bash
 # On macOS/Linux
 source venv/bin/activate
+```
 
 # 3. Install the required packages:
+```bash
 pip install -r requirements.txt
+```
 
 ## Usage
 
 1. Configure model path in `config`.
 2. Run the script to generate and save prediction.
-```
 
 #### Data
 - Data can be downloaded from the [Kaggle Airbus Ship Detection Challenge](https://www.kaggle.com/competitions/airbus-ship-detection/data).
