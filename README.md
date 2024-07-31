@@ -68,7 +68,7 @@ Ensure you have the following installed:
 
 To train the U-Net model, run:
 
-    ```bash
+```bash
     model_training.py
     ```
 
