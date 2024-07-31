@@ -70,7 +70,7 @@ To train the U-Net model, run:
 
 ```bash
     model_training.py
-    ```
+```
 
 Generates prediction masks using a pre-trained model, converts them to rectangular regions, and saves masks and results in CSV format.
 
@@ -99,9 +99,9 @@ Trains a U-Net model for image segmentation using specified data generators, wit
 
 To perform inference and visualize the results, run:
 
-    ```bash
+```bash
     python inference_make_prediction_masks_and_csv.py
-    ```
+```
 
 Generates prediction masks using a pre-trained model, converts them to rectangular regions, and saves masks and results in CSV format.
 
@@ -117,9 +117,9 @@ Generates prediction masks using a pre-trained model, converts them to rectangul
 
 To preprocess and save images and masks, run:
 
-    ```bash
+```bash
     python preprocess_and_save_images_and_masks.py
-    ```
+```
 
 ### Functions
 
