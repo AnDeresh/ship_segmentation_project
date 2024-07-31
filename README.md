@@ -68,8 +68,8 @@ Ensure you have the following installed:
 
 To train the U-Net model, run:
 
-    ```python
-    python model_training.py
+    ```bash
+    model_training.py
     ```
 
 Generates prediction masks using a pre-trained model, converts them to rectangular regions, and saves masks and results in CSV format.
