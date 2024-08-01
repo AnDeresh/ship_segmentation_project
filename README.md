@@ -97,12 +97,12 @@ Update the `configs/config.py` file with the necessary configuration settings. M
 To train the U-Net model, run:
 
 ```bash
-    training.py
+    python models/training.py
 ```
 
 ### Usage
 
-  1. Ensure paths and parameters are set in `config`.
+  1. Ensure paths and parameters are set in `configs/config`.
   2. Run the script to train the model, save checkpoints, and evaluate performance.
 
 ## Preprocessing Data
@@ -110,7 +110,7 @@ To train the U-Net model, run:
 To preprocess and save images and masks, run:
 
 ```bash
-    python preprocess_and_save_images_and_masks.py
+    python data/preprocess.py
 ```
 
 ## Running Inference
@@ -118,19 +118,19 @@ To preprocess and save images and masks, run:
 To perform inference and visualize the results, run:
 
 ```bash
-    python inference_make_prediction_masks_and_csv.py
+    python scripts/inference.py
 ```
 
 Generates prediction masks using a pre-trained model, converts them to rectangular regions, and saves masks and results in CSV format.
 
 ## Custom Scripts
 
-  - `rle_decode.py`: Contains functions to decode RLE masks.
-  - `dice_coefficient.py`: Contains implementations of Dice coefficient and loss functions.
+  - `utils/rle.py`: Contains functions to decode RLE masks.
+  - `models/dice_coefficient.py`: Contains implementations of Dice coefficient and loss functions.
 
 ## Model Architecture
 
-The U-Net model architecture is defined in `unet_model.py.`
+The U-Net model architecture is defined in `models/unet.py.`
 
 The U-Net model architecture consists of two main parts: the `encoder` (contracting path) and the `decoder` (expanding path).
 
