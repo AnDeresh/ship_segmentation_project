@@ -2,30 +2,54 @@
 
 This repository contains the code for a project involving model training, inference, and evaluation for ship segmentation using U-Net. The main components of this project are structured into various Python scripts and notebooks.
 
+### Overview
+
+Trains a U-Net model for image segmentation using specified data generators, with learning rate scheduling and model checkpointing.
+
+### Ready-Made Trained Model
+
+A ready-made trained model is available for use in prediction. You can download the trained model from the following link:
+
+[Download Trained Model](https://huggingface.co/AnnaDee/ship_segmentation/blob/main/model.h5) 
+
 ## Project Structure
 
-  - `config.py`: Configuration file for the project settings.
-  - `data_generator.py`: Script to generate data for training and validation.
-  - `dice_coefficient.py`: Implementation of the Dice coefficient and loss functions.
-  - `EDA.ipynb`: Notebook for Exploratory Data Analysis.
-  - `inference.py`: Script for running inference and visualizing results.
-  - `model_training.py`: Script for training the U-Net model.
-  - `model.h5`: Pre-trained U-Net model file.
-  - `preprocess_and_save_images_and_masks.py`: Script to preprocess and save images and masks.
-  - `requirements.txt`: List of required Python packages.
-  - `rle_decode.py`: Script to decode Run-Length Encoding (RLE) masks.
-  - `save_predictions_to_a_csv_file.py`: Script to save predictions to a CSV file.
-  - `train_ship_segmentations_v2.csv`: CSV file with training data.
-  - `unet_model.py`: Script containing the U-Net model architecture.
+```
+ship_segmentation_project/
+├── configs/
+│ ├── config.py # Configuration file for the project
+├── data/
+│ ├── preprocess.py # Script for preprocessing the data
+├── models/
+│ ├── dice_coefficient.py # Dice coefficient implementation
+│ ├── training.py # Training script for the U-Net model
+│ ├── unet.py # U-Net model definition
+├── notebooks/
+│ ├── EDA.ipynb # Data Analysis notebook
+├── scripts/
+│ ├── generate_data.py # Script for generating data
+│ ├── inference.py # Inference script
+├── utils/
+│ ├── init.py # Init file for utils module
+│ ├── rle.py # Run Length Encoding utilities
+├── .gitignore # Git ignore file
+├── README.md # Project documentation
+└── requirements.txt # Python dependencies
+```
 
 ## Setup Instructions
 
 ### Prerequisites
 
-Ensure you have the following installed:
+The project dependencies are listed in requirements.txt and include:
 
   - Python 3.8+
-  - pip (Python package installer)
+  - TensorFlow 2.10.0
+  - NumPy 1.26.3
+  - Pandas 2.2.2
+  - Pillow 10.2.0
+  - OpenCV 4.7.0.72
+  - Scikit-learn 1.4.1.post1
 
 ### Installation
 
@@ -60,40 +84,34 @@ Ensure you have the following installed:
     pip install -r requirements.txt
     ```
 
+## Configuration
+
+Update the `configs/config.py` file with the necessary configuration settings. Make sure to specify the correct paths for your data and other resources in this file.
+
 ## Data
 
-  - Data can be downloaded from the Kaggle Airbus Ship Detection Challenge.
+  - Data can be downloaded from the [Kaggle Airbus Ship Detection Challenge](https://www.kaggle.com/competitions/airbus-ship-detection/data).
 
 ### Training the Model
 
 To train the U-Net model, run:
 
 ```bash
-    model_training.py
+    training.py
 ```
-
-Generates prediction masks using a pre-trained model, converts them to rectangular regions, and saves masks and results in CSV format.
-
-
-### Overview
-
-Trains a U-Net model for image segmentation using specified data generators, with learning rate scheduling and model checkpointing.
-
-### Functions and Key Components
-
-  - `ReduceLROnPlateau`: Reduces learning rate when validation loss plateaus.
-  - `ModelCheckpoint`: Saves model checkpoints during training.
-  - `DataGenerator`: Prepares training and validation data.
-  - `unet(input_size)`: Defines the U-Net model architecture.
-  - `model.compile()`: Compiles the model with the Adam optimizer and custom loss/metrics.
-  - `model.fit()`: Trains the model.
-  - `model.save()`: Saves the trained model.
-  - `model.evaluate()`: Evaluates the model on the validation set.
 
 ### Usage
 
   1. Ensure paths and parameters are set in `config`.
   2. Run the script to train the model, save checkpoints, and evaluate performance.
+
+## Preprocessing Data
+
+To preprocess and save images and masks, run:
+
+```bash
+    python preprocess_and_save_images_and_masks.py
+```
 
 ## Running Inference
 
@@ -105,27 +123,6 @@ To perform inference and visualize the results, run:
 
 Generates prediction masks using a pre-trained model, converts them to rectangular regions, and saves masks and results in CSV format.
 
-### Functions
-
-  - `load_and_preprocess_image(image_path, target_size=(128, 128))`: Loads and preprocesses an image.
-  - `rle_encode(mask)`: Encodes a mask with Run-Length Encoding (RLE).
-  - `find_min_area_rect(mask, threshold=0.5)`: Finds minimum area rectangles in the mask.
-  - `draw_rectangles(image_size, boxes)`: Draws rectangles on the mask.
-  - `predict_and_convert_to_rect(image_path)`: Predicts and processes mask from an image.
-
-## Preprocessing Data
-
-To preprocess and save images and masks, run:
-
-```bash
-    python preprocess_and_save_images_and_masks.py
-```
-
-### Functions
-
-  - `rle_decode(mask_rle, shape=(768, 768))`: Decodes an RLE mask.
-  - `save_images_and_masks(image_ids, image_dir, mask_dir)`: Saves images and masks, handles corrupted files.
-
 ## Custom Scripts
 
   - `rle_decode.py`: Contains functions to decode RLE masks.
@@ -133,4 +130,15 @@ To preprocess and save images and masks, run:
 
 ## Model Architecture
 
-The U-Net model architecture is defined in unet_model.py. The pre-trained model is saved as `model.h5`.
+The U-Net model architecture is defined in `unet_model.py.`
+
+The U-Net model architecture consists of two main parts: the `encoder` (contracting path) and the `decoder` (expanding path).
+
+#### Encoder (Contracting Path)
+Convolutional Layers: The encoder uses a series of convolutional layers to capture spatial features. Each convolutional block is followed by a ReLU activation function.
+Pooling Layers: Max pooling operations are applied to reduce the spatial dimensions progressively, allowing the network to learn hierarchical features.
+
+#### Decoder (Expanding Path)
+Up-Convolutional Layers: The decoder path uses transposed convolutions to upsample the feature maps.
+Skip Connections: Feature maps from the encoder are concatenated with the upsampled feature maps from the decoder. These skip connections help preserve spatial information and improve segmentation accuracy.
+Final Convolution: A 1x1 convolution is applied at the end to produce the segmentation map, where each pixel is assigned a class label.
