@@ -93,13 +93,12 @@ Update the `configs/config.py` file with the necessary configuration settings. M
 
 ### Example Images
 
-Original Image:
+### Example Images in a Table
 
-![Original](assets/images/00abc623a.jpg)
-
-Segmented Image:
-
-![Segmented](assets/masks/00abc623a.jpg)
+| **Original Image** | **Segmented Image** |
+|-------------------|--------------------|
+| ![Original Image](assets/images/00abc623a.jpg) | ![Segmented Image](assets/masks/00abc623a.jpg) |
+| ![Original Image](assets/images/00b21150c.jpg) | ![Segmented Image](assets/masks/00b21150c.jpg) |
 
 ## Data
 
