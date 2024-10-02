@@ -16,6 +16,9 @@ A ready-made trained model is available for use in prediction. You can download 
 
 ```
 ship_segmentation_project/
+├── assets/
+│ ├── images/ # Store original images here
+│ ├── masks/ # Store segmented masks here
 ├── configs/
 │ ├── config.py # Configuration file for the project
 ├── data/
@@ -87,6 +90,16 @@ The project dependencies are listed in requirements.txt and include:
 ## Configuration
 
 Update the `configs/config.py` file with the necessary configuration settings. Make sure to specify the correct paths for your data and other resources in this file.
+
+### Example Images
+
+Original Image:
+
+![Original](https://github.com/AnDeresh/ship_segmentation_project/assets/images/00abc623a.jpg)
+
+Segmented Image:
+
+![Segmented](https://github.com/AnDeresh/ship_segmentation_project/assets/masks/00abc623a.jpg)
 
 ## Data
 
