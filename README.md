@@ -100,11 +100,11 @@ Update the `configs/config.py` file with the necessary configuration settings. M
   </tr>
   <tr>
     <td><img src="assets/images/00abc623a.jpg" alt="Original Image 1" width="250"/></td>
-    <td><img src="assets/masks/00b21150c.jpg" alt="Segmented Image 1" width="250"/></td>
+    <td><img src="assets/masks/00abc623a.jpg" alt="Segmented Image 1" width="250"/></td>
   </tr>
   <tr>
-    <td><img src="assets/masks/00abc623a.jpg" alt="Original Image 2" width="250"/></td>
-    <td><img src="assets/images/00b21150c.jpg" alt="Segmented Image 2" width="250"/></td>
+    <td><img src="assets/images/00b21150c.jpg" alt="Original Image 2" width="250"/></td>
+    <td><img src="assets/masks/00b21150c.jpg" alt="Segmented Image 2" width="250"/></td>
   </tr>
 </table>
 
