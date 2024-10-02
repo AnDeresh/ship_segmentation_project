@@ -93,12 +93,49 @@ Update the `configs/config.py` file with the necessary configuration settings. M
 
 ### Example Images
 
-### Example Images in a Table
-
 | **Original Image** | **Segmented Image** |
 |-------------------|--------------------|
 | ![Original Image](assets/images/00abc623a.jpg) | ![Segmented Image](assets/masks/00abc623a.jpg) |
 | ![Original Image](assets/images/00b21150c.jpg) | ![Segmented Image](assets/masks/00b21150c.jpg) |
+
+
+### Example Images in a 2x2 Table with Smaller Sizes
+
+<table>
+  <tr>
+    <th>Original Image</th>
+    <th>Segmented Image</th>
+  </tr>
+  <tr>
+    <td><img src="assets/images/00abc623a.jpg" alt="Original Image 1" width="200"/></td>
+    <td><img src="assets/images/00b21150c.jpg" alt="Segmented Image 1" width="200"/></td>
+  </tr>
+  <tr>
+    <td><img src="assets/masks/00abc623a.jpg" alt="Original Image 2" width="200"/></td>
+    <td><img src="assets/masks/00b21150c.jpg" alt="Segmented Image 2" width="200"/></td>
+  </tr>
+</table>
+
+
+<div style="width: 50%; margin: auto;">
+  <table>
+    <tr>
+      <th>Original Image</th>
+      <th>Segmented Image</th>
+    </tr>
+    <tr>
+      <td><img src="assets/images/00abc623a.jpg" alt="Original Image 1" width="150"/></td>
+      <td><img src="assets/images/00b21150c.jpg" alt="Segmented Image 1" width="150"/></td>
+    </tr>
+    <tr>
+      <td><img src="assets/masks/00abc623a.jpg" alt="Original Image 2" width="150"/></td>
+      <td><img src="assets/masks/00b21150c.jpg" alt="Segmented Image 2" width="150"/></td>
+    </tr>
+  </table>
+</div>
+
+
+
 
 ## Data
 
