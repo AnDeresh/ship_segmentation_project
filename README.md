@@ -95,11 +95,11 @@ Update the `configs/config.py` file with the necessary configuration settings. M
 
 Original Image:
 
-![Original](https://github.com/AnDeresh/ship_segmentation_project/assets/images/00abc623a.jpg)
+![Original](assets/images/00abc623a.jpg)
 
 Segmented Image:
 
-![Segmented](https://github.com/AnDeresh/ship_segmentation_project/assets/masks/00abc623a.jpg)
+![Segmented](assets/masks/00abc623a.jpg)
 
 ## Data
 
