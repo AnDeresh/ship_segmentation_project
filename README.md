@@ -91,7 +91,7 @@ The project dependencies are listed in requirements.txt and include:
 
 Update the `configs/config.py` file with the necessary configuration settings. Make sure to specify the correct paths for your data and other resources in this file.
 
-### Example Images
+## Example Images
 
 <table>
   <tr>
